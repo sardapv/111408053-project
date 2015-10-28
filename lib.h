@@ -19,5 +19,4 @@ void search();/*search  book info/records by user given key eg.authorname, book 
 
 void edit_info();/*edit  book info/records by user given key eg.authorname, book no, */
 
-void issuerecord(struct lib); /*Receipt*/
-
+void shortinfo(struct lib); /*short information on what added*/
