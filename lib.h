@@ -13,7 +13,7 @@ void display_book();/*display book details*/
 
 void addbook();/*add book information*/
 
-void delete_book();/*delete  book info/records on by user given key eg.authorname, book no, */
+void delete_book();/*delete  book info/records by user given key eg.authorname, book no, */
 
 void search();/*search  book info/records by user given key eg.authorname, book no, */
 
