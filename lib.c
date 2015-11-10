@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ncurses.h>
 #include"lib.h"
 
 FILE *f,*fp;
@@ -44,8 +45,8 @@ void addbook() {
 	}
 	fclose(f);
 }
-void Password() 
-{
+void Password() {
+	system("clear");	
 	char stat[32]="\n\n\t\tPassword Protected \n";
 	int i = 0,  j;
 	while(stat[i] != '\0') {
@@ -68,6 +69,7 @@ void Password()
 }
 
 void shortinfo(struct lib lib)  {
+	system("clear");	
 	printf("\n\t\t\tBook information added successfully !! Here are your details : \n");
 	printf("\n\t\tBook Info has been added by Mr./Ms./Mrs. %s", lib.usename);
 	printf("\n\n\t\tDATE : %d-%d-%d",lib.issueddd, lib.issuedmm, lib.issuedyy); 
@@ -76,8 +78,9 @@ void shortinfo(struct lib lib)  {
 	return;
 }
 
-void display_book()
+void display_book(struct lib lib)
 {
+	//system("clear");	
 	int s = 0, num = 1;	
 	if((f=fopen(filename,"r"))==NULL)
 	{
@@ -104,12 +107,11 @@ void display_book()
 	}
 }
 
-void delete_book()
-{
+void delete_book(struct lib lib) {
 	FILE *fp,*newf;
 	char name[32];
 	int s ,c,no;
-
+	
 	printf("\n\n\n\n\t\t\tDELETE ON PARAMETER :  ? CHOOSE FROM FOLLOWING\n\n\n\t\t\t1.TITLE/NAME of book\n\n");
 	printf("\t\t\t2.AUTHOR/WRITER of the book\n\n\t\t\t3.BOOK NUMBER\n");
 	scanf(" %d",&c);
@@ -118,7 +120,7 @@ void delete_book()
 			printf("\nWHAT IS NAME OF THE BOOK :\n\n\t\t\t\t");
 			scanf(" %[^\n]",name);
 			fp=fopen(filename,"rb+");
-			if(f==NULL)
+			if(fp==NULL)
 			{
 
 				printf("\n\t\tUnable to open file!!");
@@ -128,14 +130,13 @@ void delete_book()
 			newf=fopen("newfile","wb");
 			if(newf==NULL)
 				exit(1);
-		s=1;
-			while(fread(&lib,sizeof(lib),1,f)==1)
+			s=1;
+			while(fread(&lib,sizeof(lib),1,fp)==1)
 			{
 				if((strcmp(lib.bookname,name))==0)
 				{
 					s=0;
 					continue;
-
 				}
 				else
 					fwrite(&lib,sizeof(lib),1,newf);
@@ -148,8 +149,8 @@ void delete_book()
 			if(s==0)
 				printf(" BOOK INFORMATION DELETED");
 			else
-				printf(" Record Deleted");
-		break;	
+				printf(" RECORD NOT FOUND !!");
+			break;	
 		
 			case 2:
 			printf("\nWHO IS THE AUTHOR OF BOOK :\n\n\t\t\t\t");
@@ -166,8 +167,8 @@ void delete_book()
 				printf("\n\t\tUnable to open file!!");
 				return;
 			}
-
-			while(fread(&lib,sizeof(lib),1,f)==1)
+			s=1;
+			while(fread(&lib,sizeof(lib),1,fp)==1)
 			{
 				if((strcmp(lib.writer,name))==0)
 				{
@@ -182,10 +183,11 @@ void delete_book()
 			if(s==0)
 				printf(" BOOK INFORMATION DELETED");
 			else
-				printf(" Record Deleted");
+				printf(" RECORD NOT FOUND !!");
 			
 			fclose(fp);
 			fclose(newf);
+			getch();
 			break;
 		case 3:
 			printf("\nWHAT IS BOOK NUMBER(ACCESS NUMBER) : \n\n\t\t\t\t");
@@ -201,8 +203,8 @@ void delete_book()
 			{	printf("\n\t\tUnable to open file!!");
 				return;
 			}
-
-			while(fread(&lib,sizeof(lib),1,f)==1)
+			s=1;
+			while(fread(&lib,sizeof(lib),1,fp)==1)
 			{
 				if(lib.book_no == no)
 				{
@@ -217,7 +219,7 @@ void delete_book()
 			if(s==0)
 				printf(" BOOK INFORMATION DELETED");
 			else
-				printf(" Record Deleted");
+				printf(" RECORD NOT FOUND !!");
 
 			fclose(fp);
 			fclose(newf);
@@ -227,5 +229,4 @@ void delete_book()
 			printf("Choose from 1 2 3 only");
 			break;
 	}
-
 }
