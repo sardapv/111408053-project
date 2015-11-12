@@ -3,15 +3,15 @@
 #include"lib.h"
 #include<stdlib.h>
 char filename[30];
-int main()
-{
+int main() {
 	int choice;
-	char check;
+	char check,c,esc;
+	
 
 	strcpy(filename,"pranav");
 	while(1)
 	{     printf("\n\n\n\n\n\t\t------------*******----------");
-		printf("\n\n\n\tHello !! Welcome to Library --- choose from the following menu");
+		printf("\n\n\n\tHello !! Welcome to PRANAV's Library --- choose from the following menu");
 		printf("\n\n\n\t\t1.Add Book Information");
 		printf("\n\n\t\t2.Display Book Information");
 		printf("\n\n\t\t3.Delete Book Information");
@@ -24,32 +24,29 @@ int main()
 		switch(choice)
 		{
 			case 1:
-				{
 					Password();
-					addbook();					
+					addbook();
 					break;
-				}
 			case 2:
-				{
-					Password();
-					display_book();
+				//	Password();
+					display_book(lib);
 					break;
-				}
+				
 			case 3:
 					Password();			
-					delete_book();
+					delete_book(lib);
 					break;
 			case 4:
-		//			search();
+					//search(lib);
 					break;
 			case 6:
-		//			edit_info();
+		//			edit_info(lib);
 					break;
 			case 7:
 				exit(0);
 			default:
 				printf("\n\t\tChoose from following choices only \n");
-				printf("\t\tENter 1 2 3 4 5 6 7");
+				printf("\t\tEnter 1 2 3 4 5 6 7");
 		}
 	}
 }
