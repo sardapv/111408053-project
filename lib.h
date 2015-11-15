@@ -32,11 +32,11 @@ void display_book(struct lib);/*display book details*/
 
 void addbook();/*add book information*/
 
-void delete_book(struct lib);/*delete  book info/records on by user given key eg.authorname, book no, */
+void delete_book(struct lib);/*delete  book info/records on by user given key eg.authorname, book no, book name*/
 
-void search(struct lib);/*search  book info/records by user given key eg.authorname, book no, */
+void search(struct lib);/*search  book info/records by user given key eg.authorname, book no, book name */
 
-void edit_info(struct lib);/*edit  book info/records by user given key eg.authorname, book no, */
+void edit_info(struct lib);/*edit  book info/records by user given key eg.authorname, book no, book name */
 
 void shortinfo(struct lib); /*short information on what added*/
 
