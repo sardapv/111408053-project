@@ -36,8 +36,8 @@ int main() {
 		printf(YELLOW"\n\n\t\t\t\t\t2.Display Book Information"RESET);
 		printf(YELLOW"\n\n\t\t\t\t\t3.Delete Book Information"RESET);
 		printf(YELLOW"\n\n\t\t\t\t\t4.Search a Book "RESET);
-		printf(YELLOW"\n\n\t\t\t\t\t6.Edit available book Information"RESET);
-		printf(YELLOW"\n\n\t\t\t\t\t7.Exit from this menu"RESET);
+		printf(YELLOW"\n\n\t\t\t\t\t5.Edit available book Information"RESET);
+		printf(YELLOW"\n\n\t\t\t\t\t6.Exit from this menu"RESET);
 		printf(BOLDYELLOW"\n\n\n\n\n\t\t\t\t\t----------------------*******---------------------"RESET);
 		printf(BOLDCYAN"\n\n\t\t\t\t\t\t Your Choice:"RESET);
 		scanf("%d",&cho);
