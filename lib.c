@@ -618,6 +618,7 @@ void edit_info(struct lib lib) {
 				}
 				i++;
 			}
+			fclose(f);
 			fclose(newf);
 			break;
 		case 2 :
@@ -684,6 +685,7 @@ void edit_info(struct lib lib) {
 				}
 				i++;
 			}
+			fclose(f);
 			fclose(newf);
 			break;	
 		default : 
