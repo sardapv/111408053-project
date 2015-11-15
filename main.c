@@ -69,6 +69,7 @@ int main() {
 			default:
 					printf(BOLDRED"\n\t\t\t\tChoose from following choices only \n"RESET);
 					printf(RED"\t\t\tEnter 1 2 3 4 5 6 7"RESET);
+					break;
 		}
 	}
 }
