@@ -4,49 +4,53 @@
 #include<stdlib.h>
 char filename[30];
 int main() {
-	int choice;
+	int cho;
 	char check,c,esc;
 	
-
+	system("clear");
 	strcpy(filename,"pranav");
 	while(1)
-	{     printf("\n\n\n\n\n\t\t------------*******----------");
-		printf("\n\n\n\tHello !! Welcome to PRANAV's Library --- choose from the following menu");
-		printf("\n\n\n\t\t1.Add Book Information");
-		printf("\n\n\t\t2.Display Book Information");
-		printf("\n\n\t\t3.Delete Book Information");
-		printf("\n\n\t\t4.Search a Book ");
-		printf("\n\n\t\t6.Edit available book Information");
-		printf("\n\n\t\t7.Exit from this menu");
-	printf("\n\n\n\n\n\t\t------------*******----------");
-		printf("\n\n\n\n\t\t\t Your Choice:");
-		scanf("%d",&choice);
-		switch(choice)
+	{    	
+		system("clear");
+		printf(BOLDYELLOW"\n\n\n\n\n\t\t\t\t\t----------------------*******---------------------"RESET);
+		printf(BOLDCYAN"\n\n\n\t\t\t\tHello !! Welcome to PRANAV's Library --- choose from the following menu"RESET);
+		printf(YELLOW"\n\n\n\t\t\t\t\t1.Add Book Information"RESET);
+		printf(YELLOW"\n\n\t\t\t\t\t2.Display Book Information"RESET);
+		printf(YELLOW"\n\n\t\t\t\t\t3.Delete Book Information"RESET);
+		printf(YELLOW"\n\n\t\t\t\t\t4.Search a Book "RESET);
+		printf(YELLOW"\n\n\t\t\t\t\t6.Edit available book Information"RESET);
+		printf(YELLOW"\n\n\t\t\t\t\t7.Exit from this menu"RESET);
+		printf(BOLDYELLOW"\n\n\n\n\n\t\t\t\t\t----------------------*******---------------------"RESET);
+		printf(BOLDCYAN"\n\n\t\t\t\t\t\t Your Choice:"RESET);
+		scanf("%d",&cho);
+		switch(cho)
 		{
 			case 1:
 					Password();
 					addbook();
 					break;
 			case 2:
-				//	Password();
 					display_book(lib);
+					sleep(2);
 					break;
-				
 			case 3:
 					Password();			
 					delete_book(lib);
+					sleep(2);
 					break;
 			case 4:
-					//search(lib);
+					search(lib);
+					sleep(2);
 					break;
 			case 6:
-		//			edit_info(lib);
+					Password();
+					edit_info(lib);
 					break;
 			case 7:
-				exit(0);
+					exitp();
 			default:
-				printf("\n\t\tChoose from following choices only \n");
-				printf("\t\tEnter 1 2 3 4 5 6 7");
+					printf(BOLDRED"\n\t\t\t\tChoose from following choices only \n"RESET);
+					printf(RED"\t\t\tEnter 1 2 3 4 5 6 7"RESET);
 		}
 	}
 }
