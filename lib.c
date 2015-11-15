@@ -631,10 +631,8 @@ void edit_info(struct lib lib) {
 				if(lib1.book_no == p)
 				{
 					lib=lib1;
-					printf(YELLOW"%s\t\t%s\t\t%d\t\t%s\n"RESET,lib1.bookname,lib1.writer,lib1.book_no ,lib1.category);
 					printf("\n\t\t\t\t"BOLDGREEN"ENTER NEW RECORD "RESET);
 					printf("\n\n\n\t\t\t\t"BOLDCYAN"ENTER YOUR NAME : "RESET YELLOW);
-
 					scanf(" %[^\n]",lib1.usename);
 					printf("\n\n\t\t\t\t"BOLDYELLOW "------------------- "BOLDMAGENTA"FILL DETAILS OF THE BOOK "BOLDYELLOW"----------------\n\n"RESET);
 					printf("\n\t\t\t\t"BOLDCYAN"BOOK NAME/TITLE :"RESET YELLOW);
