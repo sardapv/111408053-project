@@ -436,7 +436,7 @@ void search(struct lib lib) {/*cases with title,writer,booknumbr,category*/
 			break;
 
 		case 2 :
-			printf(CYAN"\n\t\t\tWHO IS THE AUTHOR OF BOOK :"RESET");
+			printf(CYAN"\n\t\t\tWHO IS THE AUTHOR OF BOOK :"RESET);
 			scanf(" %[^\n]",name);
 			s=1;
 			while(fread(&lib,sizeof(lib),1,f)==1)
