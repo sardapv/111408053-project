@@ -1,3 +1,21 @@
+/*--------------------------------------------------------------------------*/
+/* 
+   Copyright (C) 2015  PRANAV SARDA saradpv14.it@coep.ac.in
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
+/*--------------------------------------------------------------------------*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -23,7 +41,7 @@ void addbook() {
 
 	while(1)
 	{
-		system("clear");
+		system("clear");/*taking input*/
 		printf("\n\t\t\t\t\t"BOLDGREEN"------- ACCESS GRANTED -------\n\n"RESET);
 		printf("\n\n\n\t\t\t\t"BOLDCYAN"ENTER YOUR NAME : "RESET YELLOW);
 		scanf(" %[^\n]",lib.usename);
@@ -50,13 +68,13 @@ void addbook() {
 			fclose(f);	
 			return;		
 		}
-		shortinfo(lib);	
+		shortinfo(lib); /*short info like receipt*/	
 	}
 	fclose(f);
 }
 #define YEAR 2015
 #define MONTH 12
-int checkdate(int day, int month, int year) {
+int checkdate(int day, int month, int year) {/*program ro check ifdate  is  correct or not*/
 	int flag = 0;
 	int daysInMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -93,7 +111,7 @@ int checkdate(int day, int month, int year) {
 	else 
 		return 2;
 }
-void Password() {
+void Password() { /*password to authorise*/
 	system("clear");
 	char stat[32]="PASSWORD PROTECTED";
 	int i = 0,  j;
@@ -107,7 +125,7 @@ void Password() {
 	char password[8] = "pranav";
 	printf("\n\n\t\t\t\t"GREEN"   Enter Password : "RESET);
 	char *passp = pass;
-	passp = getpass("");
+	passp = getpass(""); /*unistd.h function ..anything typedis not  echoed on screen*/
 	if(strcmp(passp,password) == 0) 
 	{
 		return;
@@ -120,7 +138,7 @@ void Password() {
 	}
 }
 
-void shortinfo(struct lib lib) {
+void shortinfo(struct lib lib) { /*little info like receipt given to user*/
 	system("clear");	
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t"BOLDCYAN"Book information added successfully !! Here are your details : \n"RESET);
 	printf("\n\t\t\t\t"YELLOW"Book Info has been added by Mr./Ms./Mrs. "BOLDMAGENTA"%s" RESET, lib.usename);
@@ -141,13 +159,13 @@ void display_book(struct lib lib)
 		printf("\n\t\t"RED"Unable to open file!!"RESET);
 		exit(1);
 	}
-
+	/*asking to select parameter by which books can be displayed*/
 	printf("\n\n\n\n\t\t\t"BOLDWHITE"DISPLAY ON PARAMETER : ? CHOOSE FROM FOLLOWING\n\n\n\t\t\t"BOLDMAGENTA"1.Only TITLE/NAME of book\n\n"RESET);
 	printf("\t\t\t"BOLDMAGENTA"2.BOOK NAME along with AUTHOR/WRITER of the book\n\n\t\t\t3.BOOK NAME along with BOOK NUMBER\n\n\t\t\t4.CATEGORY\n\n\t\t\t5.EVERY DETAIL\n"RESET);
 	printf(BOLDCYAN"\n\n\t\t\t\t\t\t Your Choice : "RESET);
 	scanf(" %d", &c);
 	switch(c) {
-		case 1 :
+		case 1 : /*show list of books with book names only*/
 			system("clear");
 			printf(GREEN"Here are your BOOKS : -->\n\n"RESET);
 			printf(BOLDCYAN"\tSr.no\t\t\t* BOOK NAME *\n\n	"RESET);
@@ -160,7 +178,7 @@ void display_book(struct lib lib)
 
 			break;
 
-		case 2 :
+		case 2 :/*show list of books with book names with author */
 			system("clear");
 			printf(GREEN"Here are your BOOKS : -->\n\n"RESET);
 			printf(BOLDCYAN"\tSr.no\t\t\t* BOOK NAME * \t\t * AUTHOR *\n\n"RESET);
@@ -172,7 +190,7 @@ void display_book(struct lib lib)
 			}
 			break;
 
-		case 3 :
+		case 3 :/*show list of books with book names and book number*/
 			system("clear");
 			printf(GREEN"Here are your BOOKS : -->\n\n"RESET);
 			printf(BOLDCYAN"\tSr.no\t\t\t* BOOK NAME * \t\t * BOOK NUM *\n\n"RESET);
@@ -185,7 +203,7 @@ void display_book(struct lib lib)
 
 			break;
 		case 4:
-
+			/*category wise book display*/
 			system("clear");
 			if((f=fopen(filename,"r"))==NULL)
 			{
@@ -217,7 +235,7 @@ void display_book(struct lib lib)
 				num++;
 			}
 			break;
-		case 5:
+		case 5:/*show everything about records*/
 			system("clear");
 
 			if((f=fopen(filename,"r"))==NULL)
@@ -225,7 +243,7 @@ void display_book(struct lib lib)
 				printf(RED"\n\t\tUnable to open file!!"RESET);
 				exit(1);
 			}
-			printf(GREEN"\n\t\tBOOKS AVAILABLE IN lib ARE --> \n\n"RESET);	
+			printf(GREEN"\n\t\tBOOKS AVAILABLE IN LIBRARY ARE --> \n\n"RESET);	
 			printf(BOLDCYAN"Sr.no\t\tBOOK NAME:\tAUTHOR/WRITER:\tBOOK NUMBER:\tCATEGORY:\n\n"RESET);
 			while((fread(&lib,sizeof(lib),1,f)) == 1)
 			{
@@ -237,7 +255,7 @@ void display_book(struct lib lib)
 			if (s == 0)
 				return;
 			else{
-				printf(GREEN"\n\t\tBOOKS AVAILABLE IN lib ARE -->"RESET);
+				printf(GREEN"\n\t\tBOOKS AVAILABLE IN LIBRARY ARE -->"RESET);
 				printf(RED"\n\n\t\t***SORRY!! NO BOOK IS AVAILABLE***"RESET);
 				fclose(f);
 			}
@@ -250,17 +268,17 @@ void display_book(struct lib lib)
 	fclose(f);
 }
 
-void delete_book(struct lib lib) {
+void delete_book(struct lib lib) {/*cases with title,writer,booknumbr*/
 	FILE *fp,*newf;
 	char name[32];
 	int s ,c,no;
-	system("clear");
+	system("clear");/*asking to select parameter by which books can be searched and then deleted*/
 	printf("\n\n\n\n\t\t\t"BOLDWHITE"DELETE ON PARAMETER :  ? CHOOSE FROM FOLLOWING\n\n\n\t\t\t"BOLDMAGENTA"1.TITLE/NAME of book\n\n"RESET);
 	printf(BOLDMAGENTA"\t\t\t2.AUTHOR/WRITER of the book\n\n\t\t\t3.BOOK NUMBER\n"RESET);
 	printf(BOLDCYAN"\n\n\t\t\t\t\t\t Your Choice:"RESET);
 	scanf(" %d", &c);
 	switch(c){
-		case 1:
+		case 1:/*search by name and then delete*/
 			printf(CYAN"\n\t\t\t\tWHAT IS NAME OF THE BOOK ? : "RESET);
 			scanf(" %[^\n]",name);
 			fp=fopen(filename,"rb+");
@@ -274,8 +292,9 @@ void delete_book(struct lib lib) {
 			if(newf==NULL)
 				exit(1);
 			s=1;
+			/*open new file newf search for item to be deleted then if item doesn't match then write in new file else skip and 				continue ..at last remove file f and close new file..rename newf with filename of f*/
 			while(fread(&lib,sizeof(lib),1,fp)==1)
-			{
+			{						
 				if((strcmp(lib.bookname,name))==0)
 				{
 					s=0;
@@ -349,7 +368,7 @@ void delete_book(struct lib lib) {
 			s=1;
 			while(fread(&lib,sizeof(lib),1,fp)==1)
 			{
-				if(lib.book_no == no)
+				if(lib.book_no == no) /*compare and if equal then do with newf*/
 				{
 					s=0;
 					continue;
@@ -373,7 +392,7 @@ void delete_book(struct lib lib) {
 			break;
 	}
 }
-void search(struct lib lib) {
+void search(struct lib lib) {/*cases with title,writer,booknumbr,category*/
 	FILE *f;
 	int s = 0, num = 1, c,count =1;
 	char name[100],nam[100],z,tname[100];
@@ -383,6 +402,7 @@ void search(struct lib lib) {
 		printf(RED"\n\t\tUnable to open file!!"RESET);
 		exit(1);
 	}
+	/*asking to select parameter by which books can be searched*/
 	printf("\n\n\n\n\t\t\t"BOLDWHITE"SEARCH ON PARAMETER : ? CHOOSE FROM FOLLOWING\n\n\n\t\t\t"BOLDMAGENTA"1.TITLE/NAME of book\n\n"RESET);
 	printf(BOLDMAGENTA"\t\t\t2.AUTHOR/WRITER of the book\n\n\t\t\t3.BOOK NUMBER\n\n\t\t\t4.CATEGORY\n"RESET);
 	printf(BOLDCYAN"\n\n\t\t\t\t\t\t Your Choice : "RESET);
@@ -395,7 +415,8 @@ void search(struct lib lib) {
 			s=1;
 			while((fread(&lib,sizeof(lib),1,f)) == 1) {
 
-				if((strcmp(lib.bookname,name)) == 0) {
+				if((strcmp(lib.bookname,name)) == 0) {\
+					/*start reading file  if item(parameter) matches then it is present print it*/
 					s=0 ;
 				}
 				else
@@ -410,7 +431,7 @@ void search(struct lib lib) {
 				}
 			}
 
-			if(s == 1 || i == 0)
+			if(s == 1 || i == 0) /*if not found*/
 				printf(BOLDRED"\n\n\t\t\t\t***SORRY!! NO BOOK IS AVAILABLE***"RESET);
 			break;
 
@@ -530,6 +551,9 @@ void edit_info(struct lib lib) {
 	scanf(" %d", &c);
 
 	switch(c) {
+		/*save original passed lib to lib and take new lib1  then store in lib1 if item found while searching..
+		  open new file and rewind f then if matched then write new records intaken  to newfile  newf and continue else write lib i.e 		struct from file f to newf*...remove f rename newf close newf ..new file is modified*/
+
 		case 1 :
 			system("clear");
 			printf(YELLOW"\n\n\t\t\t\t\tWhat is Name/Title of the book ? : "RESET);
@@ -571,6 +595,7 @@ void edit_info(struct lib lib) {
 					newf=fopen("newfile","wb");
 					if(newf==NULL)
 						exit(1);
+
 					while(fread(&lib,sizeof(lib),1,f)==1)
 					{
 						if((strcmp(lib.bookname,name))==0)
@@ -671,6 +696,7 @@ void edit_info(struct lib lib) {
 	return;
 }		
 void exitp() {
+	/*exiting function with little delay*/
 	printf("\n\n\n\t\t\t\t\t\t"BOLDRED"!!   Closing Application   !! \n\n\t\t\t\t\t\t\t"BOLDGREEN"!! THANK YOU !!\n\n\n"RESET);
 	sleep(2);
 	system("clear");
