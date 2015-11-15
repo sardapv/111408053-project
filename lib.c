@@ -410,7 +410,7 @@ void search(struct lib lib) {/*cases with title,writer,booknumbr,category*/
 	switch(c)
 	{
 		case 1 :
-			printf(CYAN"\n\t\t\tWHAT IS NAME OF THE BOOK ? :"RESET"\n\n\t\t\t\t");
+			printf(CYAN"\n\t\t\tWHAT IS NAME OF THE BOOK ? :"RESET);
 			scanf(" %[^\n]",name);
 			s=1;
 			while((fread(&lib,sizeof(lib),1,f)) == 1) {
@@ -436,7 +436,7 @@ void search(struct lib lib) {/*cases with title,writer,booknumbr,category*/
 			break;
 
 		case 2 :
-			printf(CYAN"\n\t\t\tWHO IS THE AUTHOR OF BOOK :"RESET"\n\n\t\t\t\t");
+			printf(CYAN"\n\t\t\tWHO IS THE AUTHOR OF BOOK :"RESET");
 			scanf(" %[^\n]",name);
 			s=1;
 			while(fread(&lib,sizeof(lib),1,f)==1)
@@ -460,7 +460,7 @@ void search(struct lib lib) {/*cases with title,writer,booknumbr,category*/
 			break;
 
 		case 3 :
-			printf(CYAN"\n\t\t\tWHAT IS BOOK NUMBER(ACCESS NUMBER) ?:"RESET" \n\n\t\t\t\t");
+			printf(CYAN"\n\t\t\tWHAT IS BOOK NUMBER(ACCESS NUMBER) ? :"RESET);
 			scanf(" %d",&no);
 			s=1;
 			while(fread(&lib,sizeof(lib),1,f)==1)
@@ -633,6 +633,7 @@ void edit_info(struct lib lib) {
 					lib=lib1;
 					printf("\n\t\t\t\t"BOLDGREEN"ENTER NEW RECORD "RESET);
 					printf("\n\n\n\t\t\t\t"BOLDCYAN"ENTER YOUR NAME : "RESET YELLOW);
+
 					scanf(" %[^\n]",lib1.usename);
 					printf("\n\n\t\t\t\t"BOLDYELLOW "------------------- "BOLDMAGENTA"FILL DETAILS OF THE BOOK "BOLDYELLOW"----------------\n\n"RESET);
 					printf("\n\t\t\t\t"BOLDCYAN"BOOK NAME/TITLE :"RESET YELLOW);
