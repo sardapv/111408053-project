@@ -60,16 +60,15 @@ int main() {
 					search(lib);
 					sleep(2);
 					break;
-			case 6:
+			case 5:
 					Password();
 					edit_info(lib);
 					break;
-			case 7:
+			case 6:
 					exitp();
 			default:
 					printf(BOLDRED"\n\t\t\t\tChoose from following choices only \n"RESET);
 					printf(RED"\t\t\tEnter 1 2 3 4 5 6 7"RESET);
-					break;
 		}
 	}
 }
